@@ -1,0 +1,24 @@
+{
+  "npmScope": "practica-final",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "geografia-e2e": {
+      "tags": []
+    },
+    "geografia": {
+      "tags": []
+    },
+    "shared-domain": {
+      "tags": []
+    },
+    "shared-ui": {
+      "tags": []
+    }
+  }
+}
