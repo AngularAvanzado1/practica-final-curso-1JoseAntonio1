@@ -1,0 +1,7 @@
+<div class="card-columns m-3 animated fadeIn">
+    <div (click)="verSeleccion(item)" *ngFor="let item of items" class="card border-info mb-3 puntero" style="max-width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+        </div>
+    </div>
+</div>

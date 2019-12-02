@@ -1,1 +1,10 @@
-<p>home works!</p>
+<!-- Busqueda-->
+<div class="col">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar Region..." aria-label="Buscar" (keyup)="buscarRegiones(buscarTexto.value)" #buscarTexto>
+</div>
+
+<!-- Aparecera cuando esten cargando las regiones -->
+<ab-geo-cargando *ngIf="cargando" class="m-3"></ab-geo-cargando>
+
+<!-- Centralizamos lo que nos mostrara las Regiones o Paises en tarjetas (no repetiremos codigo)-->
+<ab-geo-tarjetas [items]="regiones"></ab-geo-tarjetas>

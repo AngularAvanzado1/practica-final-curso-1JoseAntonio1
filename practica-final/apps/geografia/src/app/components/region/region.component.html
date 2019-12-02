@@ -1,1 +1,11 @@
-<p>region works!</p>
+<div class="row text-center animated fadeIn">
+    <div class="col">
+        <h2><i>Paises de <u>{{region.name}}</u></i></h2>
+    </div>
+</div>
+
+<!-- Aparecera cuando esten cargando las regiones -->
+<ab-geo-cargando *ngIf="cargando" class="m-3"></ab-geo-cargando>
+
+<!-- Centralizamos lo que nos mostrara las Regiones o Paises en tarjetas (no repetiremos codigo)-->
+<ab-geo-tarjetas [items]="paises"></ab-geo-tarjetas>
