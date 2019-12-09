@@ -10,12 +10,14 @@ import { RegionComponent } from './components/region/region.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { CargandoComponent } from './components/shared/cargando/cargando.component';
+import { PaisComponent } from './components/pais/pais.component';
 
 //Rutas
 import { ROUTES } from './app.routes';
 
 //Servicios
 import { WorldbankService } from './services/worldbank.service';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { WorldbankService } from './services/worldbank.service';
     RegionComponent,
     NavbarComponent,
     TarjetasComponent,
-    CargandoComponent
+    CargandoComponent,
+    PaisComponent
   ],
   imports: [
     BrowserModule,

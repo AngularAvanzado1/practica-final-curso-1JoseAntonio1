@@ -8,59 +8,47 @@ export class WorldbankService {
   paises:any[] = [];
 
   constructor(private http:HttpClient) {
-    console.log('Servicio de Regiones Listo');
-    this.obtenerRegiones()
+    console.log('Servicio de WorldBank Listo');
   }
 
+  //Cada metodo lleva su console.log, para controlar el numero de llamadas
   getQuery(query:string){
+    //console.count(`Entra en GetQuery`);
     const url = `http://api.worldbank.org/v2/${query}`;
-    console.log(url);
-    return this.http.get(url);
+    console.log(url)
+    return this.http.get<any[]>(url);
   }
 
   getRegiones(){
-    return this.getQuery('/region/?format=json')
-               .pipe( map( data => data[1] ));
+    return this.getQuery('region/?format=json')
+               .pipe( map( (data:any[]) => {
+                console.log(data[1])
+                return data[1]
+              }));
   }
 
   getRegion( id:string ){
-    return this.getQuery(`/region/${id}/?format=json`)
-               .pipe( map( data => data[1][0] ));
-  }
-
-  obtenerRegiones(){
-    this.getRegiones()
-        .subscribe((data:any[]) => this.regiones = data );
-
-  }
-
-  buscarRegiones(regionBuscada:string){
-    this.obtenerRegiones();
-    let regionesBuscadas :any[] = [];
-    regionBuscada = regionBuscada.toLowerCase();
-
-    for(let region of this.regiones){
-      let nombreReg:string = region.name.toLowerCase();
-      if(nombreReg.indexOf(regionBuscada) >= 0){
-        regionesBuscadas.push(region);
-      }
-    }
-    return regionesBuscadas;
+    return this.getQuery(`region/${id}/?format=json`)
+               .pipe( map( data => {
+                console.log(data[1][0]);
+                return data[1][0];
+                }));
   }
 
   getPaises(codigoRegion:string){
     return this.getQuery(`region/${codigoRegion}/country?per_page=1000&format=json`)
-               .pipe( map( data => data[1]));
+               .pipe( map( data => {
+                console.log(data[1])
+                return data[1]
+                }));
   }
 
-  obtenerPaises(codigoRegion:string){
-    this.getRegiones()
-        .subscribe((data:any[]) => this.regiones = data );
+  getPais( id:string ){
+    return this.getQuery(`country/${id}/?format=json`)
+               .pipe( map( data => {
+                console.log(data[1][0])
+                return data[1][0]
+              }));
   }
-
-  buscarPaises(){
-
-  }
-
 }
 

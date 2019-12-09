@@ -1,10 +1,11 @@
 <!-- Busqueda-->
 <div class="col">
+    <h3>Regiones del Mundo</h3>
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar Region..." aria-label="Buscar" (keyup)="buscarRegiones(buscarTexto.value)" #buscarTexto>
 </div>
 
-<!-- Aparecera cuando esten cargando las regiones -->
-<ab-geo-cargando *ngIf="cargando" class="m-3"></ab-geo-cargando>
+<!-- Aparecera cuando esten cargando las regiones (No consigo hacerlo funcionar con el on push, por eso esta deshabilitado)-->
+<!--<ab-geo-cargando *ngIf="cargando" class="m-3"></ab-geo-cargando> -->
 
 <!-- Centralizamos lo que nos mostrara las Regiones o Paises en tarjetas (no repetiremos codigo)-->
-<ab-geo-tarjetas [items]="regiones"></ab-geo-tarjetas>
+<ab-geo-tarjetas *ngIf="regiones$ | async as regiones" [items]="regiones"></ab-geo-tarjetas>

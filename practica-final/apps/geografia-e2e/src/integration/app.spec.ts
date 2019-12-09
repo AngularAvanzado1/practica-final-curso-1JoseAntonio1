@@ -1,13 +1,10 @@
-import { getGreeting } from '../support/app.po';
+import { tituloRegiones, visitHome } from '../support/app.po';
 
-describe('geografia', () => {
-  beforeEach(() => cy.visit('/'));
-
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to geografia!');
+describe('GIVEN: La app web Geografia ', () => {
+  beforeEach(() => visitHome());
+  context('WHEN: El usuario visite la pagina "home"',() => {
+    it('THEN: deberia salir ', () => {
+      tituloRegiones().contains('Regiones del Mundo');
+    });
   });
 });

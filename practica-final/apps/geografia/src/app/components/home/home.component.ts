@@ -1,36 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { WorldbankService } from '../../services/worldbank.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ab-geo-home',
   templateUrl: './home.component.html',
-  styles: []
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  regiones:any[] = [];
-  cargando:boolean;
+  regiones$:Observable<any[]>; //Observable
 
-  constructor( private regs: WorldbankService) {
-    this.cargando = true;
-    this.obtenerRegiones();
-  }
-
-  obtenerRegiones(){
-    this.regs.getRegiones()
-             .subscribe( (data:any[]) => {
-               this.regiones = data
-               //console.log(this.regiones);
-               this.cargando = false;
-              });
-  }
+  constructor( private regs: WorldbankService) {}
 
   buscarRegiones(region:string){
-    this.cargando = true;
-    this.regiones = this.regs.buscarRegiones(region);
-    this.cargando = false;
+  this.regiones$ = this.regs.getRegionesBusqueda(region);
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    //ARRAY
+    //this.regs.getRegiones().subscribe((data:any[]) => {
+    //  this.regiones =  data
+    //  //this.regiones = [...this.regiones]
+    //  console.log(this.regiones);
+    //});
+
+    //OBSERVABLE  -> No hace falta subcribirse con los observables
+    this.regiones$ = this.regs.getRegiones();
+  }
 
 
 
