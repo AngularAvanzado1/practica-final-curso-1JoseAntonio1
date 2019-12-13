@@ -32,7 +32,7 @@ import { WorldbankService } from './services/worldbank.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES, {useHash:true})
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [WorldbankService],
   bootstrap: [AppComponent]

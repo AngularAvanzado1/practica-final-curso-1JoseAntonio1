@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorldbankService } from '../../services/worldbank.service';
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,12 @@ export class RegionComponent implements OnInit {
 
   constructor( private router:ActivatedRoute,
                private regs:WorldbankService,
-               private cdr:ChangeDetectorRef ) {}
+               private cdr:ChangeDetectorRef,
+               private routerN:Router ) {}
+
+  buscarPaises(pais:string){
+    this.paises$ = this.regs.getPaisesBuscados(this.region['code'], pais);
+  }
 
   getRegion(id:string){
     this.regs.getRegion(id)
@@ -23,6 +28,10 @@ export class RegionComponent implements OnInit {
                this.region = data;
                this.cdr.detectChanges();
              });
+  }
+
+  regresarHome(){
+    this.routerN.navigate(['/home']);
   }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   selector: 'ab-geo-tarjetas',
   templateUrl: './tarjetas.component.html',
   styles: [],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TarjetasComponent {
 
@@ -24,3 +24,4 @@ export class TarjetasComponent {
     }
   }
 }
+

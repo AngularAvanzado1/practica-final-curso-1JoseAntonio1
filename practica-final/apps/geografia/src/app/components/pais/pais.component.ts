@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorldbankService } from '../../services/worldbank.service';
 
 @Component({
@@ -11,11 +11,13 @@ import { WorldbankService } from '../../services/worldbank.service';
 export class PaisComponent implements OnInit {
   pais:any = {};
   region:string;
+  idRegion:string;
   cargado:boolean;
 
   constructor( private router:ActivatedRoute,
                private regs:WorldbankService,
-               private cdr:ChangeDetectorRef ) {
+               private cdr:ChangeDetectorRef,
+               private routerN:Router ) {
   }
 
   getPais(id:string){
@@ -31,13 +33,17 @@ export class PaisComponent implements OnInit {
 
   informacion(pais:any){
     this.region = this.pais.region.value;
+    this.idRegion = this.pais.region.id;
+  }
+
+  regresarRegion(){
+    this.routerN.navigate(['/region',this.idRegion ]);
   }
 
   ngOnInit() {
     this.cargado = false;
     this.router.params.subscribe( params => {
       this.getPais(params['code']);
-      console.log(this.pais);
     });
   }
 

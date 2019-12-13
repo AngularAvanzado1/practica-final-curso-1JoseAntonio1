@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor( private regs: WorldbankService) {}
 
   buscarRegiones(region:string){
-  this.regiones$ = this.regs.getRegionesBusqueda(region);
+  this.regiones$ = this.regs.getRegionesBuscadas(region);
   }
 
   ngOnInit(){
