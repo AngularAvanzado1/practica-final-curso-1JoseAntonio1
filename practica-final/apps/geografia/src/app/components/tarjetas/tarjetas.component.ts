@@ -13,9 +13,9 @@ export class TarjetasComponent {
   @Input()
   items:any[] = [];
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) {}
 
-  verSeleccion(item:any){
+  verSeleccion(item){
     //Si el "Item" posee la propiedad "longitude" significara que es un PAIS, si no sera una region
     if (!item.hasOwnProperty('longitude')) {
       this.router.navigate(['/region', item.code]);

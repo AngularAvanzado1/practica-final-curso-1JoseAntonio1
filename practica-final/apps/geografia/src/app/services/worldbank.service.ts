@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()  //Este servicio se podra injectar en otros componentes
 export class WorldbankService {
+  regiones:any[] = []
 
   constructor(private http:HttpClient) {
     console.log('Servicio de WorldBank Listo');
