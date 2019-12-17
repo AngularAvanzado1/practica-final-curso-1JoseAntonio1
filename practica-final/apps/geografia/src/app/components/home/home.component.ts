@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { WorldbankService } from '../../services/worldbank.service';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Region } from '../../store/store.models';
+import { StoreService } from '../../store/store.service';
 
 @Component({
   selector: 'ab-geo-home',
@@ -12,7 +15,11 @@ export class HomeComponent implements OnInit {
   private regiones$:Observable<any[]>; //Observable
   private subject$ = new BehaviorSubject(this.get());
 
-  constructor( private regs: WorldbankService) {
+  constructor(
+    private regs: WorldbankService,
+    private store: Store<Region[]>,
+    private storeServicio: StoreService
+  ){
     this.set(this.regs.getRegiones())
   }
 
@@ -30,6 +37,21 @@ export class HomeComponent implements OnInit {
 
     //OBSERVABLE  -> No hace falta subcribirse con los observables
     //this.regiones$ = this.regs.getRegiones();
+
+    this.storeServicio.CrearRegiones([
+      {
+        id: "",
+        code: "AFR",
+        iso2code: "A9",
+        name: "Africa"
+      },
+      {
+        id: "",
+        code: "ANR",
+        iso2code: "A9",
+        name: "Africa"
+      }
+    ]);
   }
 
   public select$(){
