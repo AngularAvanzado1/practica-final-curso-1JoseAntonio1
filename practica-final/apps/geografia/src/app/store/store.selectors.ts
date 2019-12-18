@@ -1,6 +1,21 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromStore from './store.reducer';
+import { regionesFeatureKey, State } from './store.reducer';
+import { Region } from './store.models';
 
-export const selectStoreState = createFeatureSelector<fromStore.State>(
-  fromStore.storeFeatureKey
+export const getRegionesMetodosState = createFeatureSelector<Region[]>(
+  regionesFeatureKey
+);
+
+export const getPaisesMetodosState = createFeatureSelector<State>(
+  regionesFeatureKey
+);
+
+export const getRegiones = createSelector(
+  getRegionesMetodosState,
+  (regiones: Region[]) => regiones
+);
+
+export const getPaises = createSelector(
+  getPaisesMetodosState,
+  (state: State) => state.paises
 );

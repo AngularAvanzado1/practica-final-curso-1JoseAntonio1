@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Region } from '../store/store.models';
 
 @Injectable()  //Este servicio se podra injectar en otros componentes
 export class WorldbankService {
@@ -36,10 +37,15 @@ export class WorldbankService {
 
   getRegiones(){
     return this.getQuery('region/?format=json')
-               .pipe( map( (data:any[]) => {
+               .pipe( map( (data:Region[]) => {
                 console.log(data[1]);
                 return data[1];
               }));
+  }
+
+  getRegiones1(){
+    //return this.getQuery('region/?format=json').map((res:Region[])  => res.json())
+
   }
 
   getRegion( id:string ){

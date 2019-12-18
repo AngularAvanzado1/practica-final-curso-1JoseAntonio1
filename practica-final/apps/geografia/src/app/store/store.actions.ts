@@ -1,7 +1,12 @@
 import { createAction, props } from '@ngrx/store';
-import { Region } from './store.models';
+import { Region, Pais } from './store.models';
 
-export const CrearRegiones = createAction(
-  '[REGIONES] Crear Regiones',
+export const LeerRegiones = createAction(
+  '[REGIONES] Leer Regiones',
   props<{regiones:Region[]}>()
+);
+
+export const LeerPaises = createAction(
+  '[PAISES] Leer Paises',
+  props<{paises:Pais[]}>()
 );

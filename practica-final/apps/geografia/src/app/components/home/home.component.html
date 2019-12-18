@@ -9,4 +9,4 @@
 
 <!-- Centralizamos lo que nos mostrara las Regiones o Paises en tarjetas (no repetiremos codigo)-->
 <!--<ab-geo-tarjetas [items]="regiones"></ab-geo-tarjetas>-->
-<ab-geo-tarjetas *ngIf="get() | async as regiones" [items]="regiones"></ab-geo-tarjetas>
+<ab-geo-tarjetas *ngIf="regiones$ | async as regiones" [items]="regiones"></ab-geo-tarjetas>

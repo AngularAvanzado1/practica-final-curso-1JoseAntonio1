@@ -43,7 +43,8 @@ import { WorldbankService } from './services/worldbank.service';
     StoreModule.forRoot(
       {
         router: routerReducer,
-        regiones: reducer
+        regiones: reducer,
+        paises: reducer
       },
       {
         metaReducers: !environment.production ? [] : [],
