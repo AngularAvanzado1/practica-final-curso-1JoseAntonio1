@@ -44,7 +44,6 @@ export class PaisComponent implements OnInit {
     });
 
     this.region$.subscribe(data => {
-      console.log(data)
       this.datosRegion = data;
     })
   }

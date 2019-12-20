@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Region } from '../store/store.models';
+
 
 @Injectable()  //Este servicio se podra injectar en otros componentes
 export class WorldbankService {
-  regiones:any[] = []
+  public idioma = "en";
 
-  constructor(private http:HttpClient) {
-    console.log('Servicio de WorldBank Listo');
+  constructor(private http:HttpClient
+              )
+  {
+    //console.log('Servicio de WorldBank Listo');
   }
 
   //Cada metodo lleva su console.log, para controlar el numero de llamadas
   getQuery(query:string){
     //console.count(`Entra en GetQuery`);
-    const url = `http://api.worldbank.org/v2/${query}`;
+    const url ='http://api.worldbank.org/v2/'+ this.idioma + '/' + query;
     console.log(url)
     return this.http.get<any[]>(url);
   }

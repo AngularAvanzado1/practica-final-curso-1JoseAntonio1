@@ -1,12 +1,11 @@
-<div class="row animated fadeIn">
-    <div class="col">
-        <h2><i>Pais <u>{{datosPais.name}}</u></i></h2>
+<div *ngIf="pais$ | async as pais" class="row animated fadeIn">
+    <div *ngIf="region$ | async as region" class="col">
+        <h2><i>Pais <u>{{pais.name}}</u></i></h2>
         <ul>
-            <li>Capital: {{datosPais.capitalCity}}</li>
-            <li>Latitud: {{datosPais.latitude}} / Longitud: {{datosPais.longitude}}</li>
-            <li>Region : {{datosRegion.name}}</li>
+            <li>Capital: {{pais.capitalCity}}</li>
+            <li>Latitud: {{pais.latitude}} / Longitud: {{pais.longitude}}</li>
+            <li>Region : {{region.name}}</li>
         </ul>
-
         <div class="col ">
             <button type="button" (click)="regresarRegion()" class="btn btn-primary ">Regresar</button>
         </div>

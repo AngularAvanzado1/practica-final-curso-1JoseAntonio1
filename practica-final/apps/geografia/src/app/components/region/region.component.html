@@ -1,9 +1,9 @@
 <div *ngIf="(paises$ | async) as paises" class=" animated fadeIn ">
 
-    <!-- <div *ngIf="region$ | async as region" class="col ">
-        <h3>Paises de <i><u>{{region}}</u></i></h3>
+    <div class="col " *ngIf="(region$ | async)">
+        <h3>Paises de <i><u>{{(region$ | async).name}}</u></i></h3>
         <input class="form-control mr-sm-2 container " type="search " placeholder="Buscar Region... " aria-label="Buscar " (keyup)="buscarPaises(buscarTexto.value) " #buscarTexto>
-    </div> -->
+    </div>
 
     <ab-geo-tarjetas [items]="paises "></ab-geo-tarjetas>
 

@@ -26,8 +26,8 @@ export class RegionComponent implements OnInit {
 
   buscarPaises(pais:string){
     this.router.params.subscribe( params => {
-      this.regs.getPaises(params['code']).subscribe(res => {
-        this.storeServicio.LeerPaises(res)
+      this.regs.getPaisesBuscados(params['code'],pais).subscribe(data => {
+        this.storeServicio.LeerPaises(data)
       })
     });
   }
@@ -46,11 +46,11 @@ export class RegionComponent implements OnInit {
     this.storeServicio.LeerPais(null)
 
     this.router.params.subscribe( params => {
-      this.regs.getPaises(params['code']).subscribe(res => {
-        this.storeServicio.LeerPaises(res)
-      })
       this.regs.getRegion(params['code']).subscribe(res => {
         this.storeServicio.LeerRegion(res)
+      })
+      this.regs.getPaises(params['code']).subscribe(res => {
+        this.storeServicio.LeerPaises(res)
       })
     });
 

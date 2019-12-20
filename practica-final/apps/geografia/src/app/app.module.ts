@@ -44,7 +44,9 @@ import { WorldbankService } from './services/worldbank.service';
       {
         router: routerReducer,
         regiones: reducer,
-        paises: reducer
+        paises: reducer,
+        region: reducer,
+        pais: reducer
       },
       {
         metaReducers: !environment.production ? [] : [],
