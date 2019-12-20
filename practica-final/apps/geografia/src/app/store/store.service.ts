@@ -14,13 +14,25 @@ export class StoreService {
   //ACCIONES
   public LeerRegiones(regiones:Region[]):void{
     this.store.dispatch(storeAction.LeerRegiones({
-      regiones: {...regiones}
+      regiones: [...regiones]
     }))
   }
 
   public LeerPaises(paises:Pais[]):void{
     this.store.dispatch(storeAction.LeerPaises({
-      paises: {...paises}
+      paises: [...paises]
+    }))
+  }
+
+  public LeerRegion(region:Region):void{
+    this.store.dispatch(storeAction.LeerRegion({
+      region: {...region}
+    }))
+  }
+
+  public LeerPais(pais:Pais):void{
+    this.store.dispatch(storeAction.LeerPais({
+      pais: {...pais}
     }))
   }
 
@@ -31,5 +43,13 @@ export class StoreService {
 
   public getPaises$():Observable<Pais[]>{
     return this.store.select(storeSelector.getPaises);
+  }
+
+  public getRegion$():Observable<Region>{
+    return this.store.select(storeSelector.getRegion);
+  }
+
+  public getPais$():Observable<Pais>{
+    return this.store.select(storeSelector.getPais);
   }
 }

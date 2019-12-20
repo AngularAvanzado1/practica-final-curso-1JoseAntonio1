@@ -4,6 +4,9 @@ import { Region, Pais } from './store.models';
 
 export const regionesFeatureKey = 'regiones';
 export const paisesFeatureKey = 'paises';
+export const regionFeatureKey = 'region';
+export const paisFeatureKey = 'pais';
+
 
 export interface State {
   regiones:Region[],
@@ -21,8 +24,30 @@ export const initialState: State = {
 
 const storeReducer = createReducer(
   [],
-  on(StoreActions.LeerRegiones, (state,regiones) => [...state,regiones]),
-  on(StoreActions.LeerPaises, (state,paises) => [...state,paises])
+  on(StoreActions.LeerRegiones, (state,regiones) => {
+    return {
+      ...state,
+      regiones: regiones.regiones
+    }
+  }),
+  on(StoreActions.LeerPaises, (state,paises) => {
+    return {
+      ...state,
+      paises: paises.paises
+    }
+  }),
+  on(StoreActions.LeerRegion, (state,region) => {
+    return {
+      ...state,
+      region: region.region
+    }
+  }),
+  on(StoreActions.LeerPais, (state,pais) => {
+    return {
+      ...state,
+      pais: pais.pais
+    }
+  })
 );
 
 export function reducer(state: any | undefined, action: Action) {

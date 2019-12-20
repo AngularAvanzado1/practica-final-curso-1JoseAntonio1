@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { WorldbankService } from '../../services/worldbank.service';
-import { Observable } from 'rxjs';
+import { Observable  } from 'rxjs';
 import { StoreService } from '../../store/store.service';
 import { Region } from '../../store/store.models';
 
@@ -19,18 +19,17 @@ export class HomeComponent implements OnInit {
   ){}
 
   buscarRegiones(region:string){
-    //this.set(this.regs.getRegionesBuscadas(region))
+    this.regs.getRegionesBuscadas(region).subscribe(data => {
+      this.storeServicio.LeerRegiones(data)
+    })
   }
 
   ngOnInit(){
     this.regiones$ = this.storeServicio.getRegiones$();
 
-    this.storeServicio.LeerRegiones([
-      //this.regs.getRegiones().map(res  => res.json())
-    ]);
-
-    //Que esta pasando
-    this.regiones$.subscribe(data => {console.log(data)});
+    this.regs.getRegiones().subscribe(res => {
+        this.storeServicio.LeerRegiones(res)
+    })
   }
 }
 

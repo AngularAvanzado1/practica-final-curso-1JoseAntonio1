@@ -1,13 +1,10 @@
-<div *ngIf="paises$ | async as paises" class=" animated fadeIn ">
-    <div class="col ">
-        <h3>Paises de <i><u>{{region.name}}</u></i></h3>
+<div *ngIf="(paises$ | async) as paises" class=" animated fadeIn ">
+
+    <!-- <div *ngIf="region$ | async as region" class="col ">
+        <h3>Paises de <i><u>{{region}}</u></i></h3>
         <input class="form-control mr-sm-2 container " type="search " placeholder="Buscar Region... " aria-label="Buscar " (keyup)="buscarPaises(buscarTexto.value) " #buscarTexto>
-    </div>
+    </div> -->
 
-    <!-- Aparecera cuando esten cargando los paises -->
-    <!--<ab-geo-cargando *ngIf="cargando " class="m-3 "></ab-geo-cargando> -->
-
-    <!-- Centralizamos lo que nos mostrara las Regiones o Paises en tarjetas (no repetiremos codigo)-->
     <ab-geo-tarjetas [items]="paises "></ab-geo-tarjetas>
 
     <div class="col ">

@@ -21,7 +21,7 @@ export class WorldbankService {
 
   getRegionesBuscadas( nombre:string ){
     return this.getQuery('region/?format=json')
-               .pipe( map( (data:any[]) => {
+               .pipe( map( (data:any) => {
                 let regiones:any[] = [];
                 nombre = nombre.toLowerCase();
                 for (let region of data[1]){
@@ -37,20 +37,15 @@ export class WorldbankService {
 
   getRegiones(){
     return this.getQuery('region/?format=json')
-               .pipe( map( (data:Region[]) => {
+               .pipe( map( (data:any) => {
                 console.log(data[1]);
                 return data[1];
               }));
   }
 
-  getRegiones1(){
-    //return this.getQuery('region/?format=json').map((res:Region[])  => res.json())
-
-  }
-
   getRegion( id:string ){
     return this.getQuery(`region/${id}/?format=json`)
-               .pipe( map( data => {
+               .pipe( map( (data:any) => {
                 console.log(data[1][0]);
                 return data[1][0];
                 }));
@@ -58,7 +53,7 @@ export class WorldbankService {
 
   getPaisesBuscados(codigoRegion:string, nombre:string ){
     return this.getQuery(`region/${codigoRegion}/country?per_page=1000&format=json`)
-               .pipe( map( data => {
+               .pipe( map( (data:any) => {
                 let paises:any[] = [];
                 nombre = nombre.toLowerCase();
                 for (let pais of data[1]){
@@ -74,7 +69,7 @@ export class WorldbankService {
 
   getPaises(codigoRegion:string){
     return this.getQuery(`region/${codigoRegion}/country?per_page=1000&format=json`)
-               .pipe( map( data => {
+               .pipe( map( (data:any) => {
                 console.log(data[1])
                 return data[1]
                 }));
@@ -82,7 +77,7 @@ export class WorldbankService {
 
   getPais( id:string ){
     return this.getQuery(`country/${id}/?format=json`)
-               .pipe( map( data => {
+               .pipe( map( (data:any) => {
                 console.log(data[1][0])
                 return data[1][0]
               }));

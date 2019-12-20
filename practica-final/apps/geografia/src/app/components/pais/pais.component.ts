@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorldbankService } from '../../services/worldbank.service';
+import { StoreService } from '../../store/store.service';
+import { Observable } from 'rxjs';
+import { Pais, Region } from '../../store/store.models';
 
 @Component({
   selector: 'ab-geo-pais',
@@ -9,42 +12,41 @@ import { WorldbankService } from '../../services/worldbank.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaisComponent implements OnInit {
-  pais:any = {};
-  region:string;
-  idRegion:string;
-  cargado:boolean;
+  pais$:Observable<Pais>;
+  region$:Observable<Region>;
+  datosPais:Pais = null;
+  datosRegion:Region = null;
 
   constructor( private router:ActivatedRoute,
                private regs:WorldbankService,
-               private cdr:ChangeDetectorRef,
-               private routerN:Router ) {
-  }
-
-  getPais(id:string){
-    this.regs.getPais(id)
-             .subscribe(data => {
-               this.pais = data;
-               this.informacion(this.pais);
-               this.cargado = true;
-               //Detectamos el cambio para que se vea en pantalla
-               this.cdr.detectChanges();
-             });
-  }
-
-  informacion(pais:any){
-    this.region = this.pais.region.value;
-    this.idRegion = this.pais.region.id;
-  }
+               private routerN:Router,
+               private storeServicio: StoreService ) {}
 
   regresarRegion(){
-    this.routerN.navigate(['/region',this.idRegion ]);
+    this.region$.subscribe(data => {
+      this.routerN.navigate(['/region',data.code]);
+    })
   }
 
   ngOnInit() {
-    this.cargado = false;
+     //Selectores
+    this.pais$ = this.storeServicio.getPais$();
+    this.region$ = this.storeServicio.getRegion$();
+
+    //Acciones
+    this.storeServicio.LeerPaises([])
+
     this.router.params.subscribe( params => {
-      this.getPais(params['code']);
+      this.regs.getPais(params['code']).subscribe(data => {
+        this.storeServicio.LeerPais(data)
+        this.datosPais = data;
+      })
     });
+
+    this.region$.subscribe(data => {
+      console.log(data)
+      this.datosRegion = data;
+    })
   }
 
 }
