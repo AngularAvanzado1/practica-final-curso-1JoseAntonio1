@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TarjetasComponent {
+export class TarjetasComponent implements OnInit{
 
   //Recibiremos los Items
   @Input()
@@ -23,5 +23,7 @@ export class TarjetasComponent {
       this.router.navigate(['/pais', item.id]);
     }
   }
+
+  ngOnInit(){}
 }
 

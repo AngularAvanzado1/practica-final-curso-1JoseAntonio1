@@ -14,8 +14,6 @@ import { Pais, Region } from '../../store/store.models';
 export class PaisComponent implements OnInit {
   pais$:Observable<Pais>;
   region$:Observable<Region>;
-  datosPais:Pais = null;
-  datosRegion:Region = null;
 
   constructor( private router:ActivatedRoute,
                private regs:WorldbankService,
@@ -39,13 +37,8 @@ export class PaisComponent implements OnInit {
     this.router.params.subscribe( params => {
       this.regs.getPais(params['code']).subscribe(data => {
         this.storeServicio.LeerPais(data)
-        this.datosPais = data;
-      })
+        })
     });
-
-    this.region$.subscribe(data => {
-      this.datosRegion = data;
-    })
   }
 
 }
