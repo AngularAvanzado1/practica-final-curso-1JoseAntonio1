@@ -2,7 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { WorldbankService } from '../../services/worldbank.service';
 import { Observable  } from 'rxjs';
 import { StoreService } from '../../store/store.service';
-import { Region } from '../../store/store.models';
+import { Region } from '@practica-final/domain';
+
 
 @Component({
   selector: 'ab-geo-home',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Region, Pais } from './store.models';
+import { Region, Pais } from '@practica-final/domain';
 import * as storeAction from './store.actions';
 import * as storeSelector from './store.selectors';
 import { Observable } from 'rxjs';

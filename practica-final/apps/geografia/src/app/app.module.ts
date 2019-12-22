@@ -23,6 +23,7 @@ import { ROUTES } from './app.routes';
 
 //Servicios
 import { WorldbankService } from './services/worldbank.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { WorldbankService } from './services/worldbank.service';
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [WorldbankService],
   bootstrap: [AppComponent]

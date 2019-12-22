@@ -19,7 +19,8 @@
                         "aot": false,
                         "assets": [
                             "apps/geografia/src/favicon.ico",
-                            "apps/geografia/src/assets"
+                            "apps/geografia/src/assets",
+                            "apps/geografia/src/manifest.webmanifest"
                         ],
                         "styles": ["apps/geografia/src/styles.css"],
                         "scripts": []
@@ -49,7 +50,9 @@
                                     "maximumWarning": "6kb",
                                     "maximumError": "10kb"
                                 }
-                            ]
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "apps/geografia/ngsw-config.json"
                         }
                     }
                 },

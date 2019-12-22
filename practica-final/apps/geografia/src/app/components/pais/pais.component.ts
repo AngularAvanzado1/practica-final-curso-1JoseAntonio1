@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WorldbankService } from '../../services/worldbank.service';
 import { StoreService } from '../../store/store.service';
 import { Observable } from 'rxjs';
-import { Pais, Region } from '../../store/store.models';
+import { Pais, Region } from '@practica-final/domain';
 
 @Component({
   selector: 'ab-geo-pais',

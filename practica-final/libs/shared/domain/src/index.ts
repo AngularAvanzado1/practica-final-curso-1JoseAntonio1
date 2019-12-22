@@ -1,1 +1,1 @@
-export * from './lib/Traducir';
+export * from './lib/modelos';

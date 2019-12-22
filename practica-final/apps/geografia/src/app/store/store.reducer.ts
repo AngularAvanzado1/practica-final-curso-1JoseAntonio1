@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as StoreActions from './store.actions';
-import { Region, Pais } from './store.models';
+import { Region, Pais } from '@practica-final/domain';
 
 export const regionesFeatureKey = 'regiones';
 export const paisesFeatureKey = 'paises';

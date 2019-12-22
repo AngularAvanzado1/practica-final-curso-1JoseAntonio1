@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Region, Pais } from './store.models';
+import { Region, Pais } from '@practica-final/domain';
 
 export const LeerRegiones = createAction(
   '[REGIONES] Leer Regiones',
