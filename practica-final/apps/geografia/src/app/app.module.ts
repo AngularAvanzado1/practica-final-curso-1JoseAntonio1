@@ -8,7 +8,6 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { reducer } from './store/store.reducer';
 
-
 //Modulo para poder realizar peticiones
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
