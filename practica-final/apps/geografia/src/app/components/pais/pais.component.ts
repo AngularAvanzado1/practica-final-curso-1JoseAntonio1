@@ -32,7 +32,7 @@ export class PaisComponent implements OnInit {
     this.region$ = this.storeServicio.getRegion$();
 
     //Acciones
-    this.storeServicio.LeerPaises([])
+    //this.storeServicio.LeerPaises([])
 
     this.router.params.subscribe( params => {
       this.regs.getPais(params['code']).subscribe(data => {

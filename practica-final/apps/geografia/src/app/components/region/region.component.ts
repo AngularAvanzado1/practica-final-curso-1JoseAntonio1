@@ -42,8 +42,8 @@ export class RegionComponent implements OnInit {
     this.region$ = this.storeServicio.getRegion$();
 
     //Acciones
-    this.storeServicio.LeerRegiones([])
-    this.storeServicio.LeerPais(null)
+    //this.storeServicio.LeerRegiones([])
+    //this.storeServicio.LeerPais(null)
 
     this.router.params.subscribe( params => {
       this.regs.getRegion(params['code']).subscribe(res => {

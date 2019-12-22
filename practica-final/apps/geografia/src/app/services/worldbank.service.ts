@@ -40,8 +40,14 @@ export class WorldbankService {
   getRegiones(){
     return this.getQuery('region/?format=json')
                .pipe( map( (data:any) => {
-                console.log(data[1]);
-                return data[1];
+                let regiones:any[] = [];
+                for (let region of data[1]){
+                  if( region.name != ""){
+                    regiones.push(region);
+                  }
+                }
+                console.log(regiones);
+                return regiones;
               }));
   }
 

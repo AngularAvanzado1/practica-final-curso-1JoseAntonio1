@@ -22,7 +22,6 @@ export class NavbarComponent {
         this.storeServicio.LeerRegiones(res)
     })
     }else if (location.href.indexOf("/region") != -1){
-      console.log(location.href.substring(location.href.lastIndexOf("/")+1))
       this.regs.getRegion(location.href.substring(location.href.lastIndexOf("/")+1)).subscribe(res => {
         this.storeServicio.LeerRegion(res)
       })

@@ -25,7 +25,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(){
+    //SELECTORES
     this.regiones$ = this.storeServicio.getRegiones$();
+
+    //ACCIONES
+    //this.storeServicio.LeerPaises([])
 
     this.regs.getRegiones().subscribe(res => {
         this.storeServicio.LeerRegiones(res)
