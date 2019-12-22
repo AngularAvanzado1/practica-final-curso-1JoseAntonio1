@@ -7,7 +7,7 @@
         "nx": "nx",
         "start:geografia": "ng serve geografia",
         "build:geografia": "ng build geografia --prod",
-        "start:geografia:pwa": "angular-http-server --open -p 8081 --path ./dist/apps/geografia",
+        "start:geografia:pwa": "angular-http-server --open -p  8081 --path ./dist/apps/geografia",
         "test": "ng test",
         "lint": "nx workspace-lint && ng lint",
         "e2e": "ng e2e",
